@@ -19,8 +19,8 @@
 -- Table structure for table `tasks`
 --
 
-DROP DATABASE IF EXISTS 'ssi3';
-CREATE DATABASE 'ssi3';
+DROP DATABASE IF EXISTS ssi3;
+CREATE DATABASE ssi3;
 
 DROP TABLE IF EXISTS `tasks`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
