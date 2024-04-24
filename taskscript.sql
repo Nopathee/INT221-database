@@ -30,7 +30,7 @@ CREATE TABLE `tasks` (
   `task_title` varchar(100) NOT NULL,
   `task_description` varchar(500) DEFAULT NULL,
   `task_assignees` varchar(30) DEFAULT NULL,
-  `task_status` enum('NoStatus','ToDo','Doing','Done') NOT NULL,
+  `task_status` enum('No_Status','To_Do','Doing','Done') NOT NULL,
   `created_on` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_on` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`task_id`)
