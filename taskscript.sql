@@ -15,14 +15,12 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
---
--- Table structure for table `tasks`
---
-
 DROP DATABASE IF EXISTS ssi3;
 CREATE DATABASE ssi3;
 
-USE ssi3;
+--
+-- Table structure for table `tasks`
+--
 
 DROP TABLE IF EXISTS `tasks`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -32,7 +30,7 @@ CREATE TABLE `tasks` (
   `task_title` varchar(100) NOT NULL,
   `task_description` varchar(500) DEFAULT NULL,
   `task_assignees` varchar(30) DEFAULT NULL,
-  `task_status` enum('No_Status','To_Do','Doing','Done') NOT NULL,
+  `task_status` enum('No Status','To Do','Doing','Done') NOT NULL,
   `created_on` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_on` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`task_id`)
