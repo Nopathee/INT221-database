@@ -15,6 +15,7 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
+
 DROP DATABASE IF EXISTS ssi3;
 CREATE DATABASE ssi3;
 
@@ -56,3 +57,39 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2024-04-23 21:27:08
+
+-- Row 1
+INSERT INTO tasks (task_title, task_description, task_Assignees, task_Status)
+VALUES (
+    'TaskTitle1TaskTitle2TaskTitle3TaskTitle4TaskTitle5TaskTitle6TaskTitle7TaskTitle8TaskTitle9TaskTitle0',
+      'Descripti1Descripti2Descripti3Descripti4Descripti5Descripti6Descripti7Descripti8Descripti9Descripti1Descripti1Descripti2Descripti3Descripti4Descripti5Descripti6Descripti7Descripti8Descripti9Descripti2Descripti1Descripti2Descripti3Descripti4Descripti5Descripti6Descripti7Descripti8Descripti9Descripti3Descripti1Descripti2Descripti3Descripti4Descripti5Descripti6Descripti7Descripti8Descripti9Descripti4Descripti1Descripti2Descripti3Descripti4Descripti5Descripti6Descripti7Descripti8Descripti9Descripti5',
+    'Assignees1Assignees2Assignees3',
+    'No Status'
+);
+
+-- Row 2
+INSERT INTO tasks (task_title, task_description, task_Assignees, task_Status)
+VALUES (
+    'Repository',
+    '',
+    '',
+    'To Do'
+);
+
+-- Row 3
+INSERT INTO tasks (task_title, task_description, task_Assignees, task_Status)
+VALUES (
+    'ดาต$าเบส',
+    '້້ສ ້ າ ງ ຖ າ ນ ຂໍ ມ ູ ນ\nあなた、彼、彼女 (私ではありません)',
+    'あなた、彼、彼女 (私ではありません)',
+    'Doing'
+);
+
+-- Row 4
+INSERT INTO tasks (task_title, task_description, task_Assignees, task_Status)
+VALUES (
+    'Infrastructure',
+    'Setup containers\nไก่*งวง กับ เพนกวิน',
+    '',
+    'Done'
+);
