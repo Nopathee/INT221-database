@@ -18,7 +18,7 @@
 
 DROP DATABASE IF EXISTS ssi3;
 CREATE DATABASE ssi3;
-
+a
 --
 -- Table structure for table `tasks`
 --
@@ -61,7 +61,7 @@ UNLOCK TABLES;
 -- Dump completed on 2024-04-23 21:27:08
 
 -- Row 1
-INSERT INTO tasks (task_title, task_description, task_Assignees, task_Status,created_on, updated_on)
+INSERT INTO tasks (task_title, task_description, task_assignees, task_status,created_on, updated_on)
 VALUES (
     'TaskTitle1TaskTitle2TaskTitle3TaskTitle4TaskTitle5TaskTitle6TaskTitle7TaskTitle8TaskTitle9TaskTitle0',
       'Descripti1Descripti2Descripti3Descripti4Descripti5Descripti6Descripti7Descripti8Descripti9Descripti1Descripti1Descripti2Descripti3Descripti4Descripti5Descripti6Descripti7Descripti8Descripti9Descripti2Descripti1Descripti2Descripti3Descripti4Descripti5Descripti6Descripti7Descripti8Descripti9Descripti3Descripti1Descripti2Descripti3Descripti4Descripti5Descripti6Descripti7Descripti8Descripti9Descripti4Descripti1Descripti2Descripti3Descripti4Descripti5Descripti6Descripti7Descripti8Descripti9Descripti5',
@@ -72,7 +72,7 @@ VALUES (
 );
 
 -- Row 2
-INSERT INTO tasks (task_title, task_description, task_Assignees, task_Status,created_on, updated_on)
+INSERT INTO tasks (task_title, task_description, task_assignees, task_status,created_on, updated_on)
 VALUES (
     'Repository',
     '',
@@ -83,7 +83,7 @@ VALUES (
 );
 
 -- Row 3
-INSERT INTO tasks (task_title, task_description, task_Assignees, task_Status,created_on, updated_on)
+INSERT INTO tasks (task_title, task_description, task_assignees, task_status,created_on, updated_on)
 VALUES (
     'ดาต้าเบส',
     'ສ້າງຖານຂໍ້ມູນ',
@@ -94,7 +94,7 @@ VALUES (
 );
 
 -- Row 4
-INSERT INTO tasks (task_title, task_description, task_Assignees, task_Status,created_on, updated_on)
+INSERT INTO tasks (task_title, task_description, task_assignees, task_status,created_on, updated_on)
 VALUES (
     '_Infrastructure_',
     '_Setup containers_',
