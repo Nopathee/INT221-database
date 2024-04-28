@@ -17,7 +17,7 @@
 
 
 DROP DATABASE IF EXISTS ssi3;
-CREATE DATABASE ssi3;
+CREATE DATABASE ssi3 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci ;
 
 --
 -- Table structure for table `tasks`
