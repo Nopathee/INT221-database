@@ -18,7 +18,7 @@
 
 DROP DATABASE IF EXISTS ssi3;
 CREATE DATABASE ssi3;
-a
+
 --
 -- Table structure for table `tasks`
 --
