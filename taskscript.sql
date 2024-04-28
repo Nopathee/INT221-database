@@ -23,7 +23,9 @@ CREATE DATABASE ssi3;
 -- Table structure for table `tasks`
 --
 
-DROP TABLE IF EXISTS `tasks`;
+USE ssi3;
+
+DROP TABLE IF EXISTS `tasks`; 
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tasks` (
@@ -59,37 +61,45 @@ UNLOCK TABLES;
 -- Dump completed on 2024-04-23 21:27:08
 
 -- Row 1
-INSERT INTO tasks (task_title, task_description, task_Assignees, task_Status)
+INSERT INTO tasks (task_title, task_description, task_Assignees, task_Status,created_on, updated_on)
 VALUES (
     'TaskTitle1TaskTitle2TaskTitle3TaskTitle4TaskTitle5TaskTitle6TaskTitle7TaskTitle8TaskTitle9TaskTitle0',
       'Descripti1Descripti2Descripti3Descripti4Descripti5Descripti6Descripti7Descripti8Descripti9Descripti1Descripti1Descripti2Descripti3Descripti4Descripti5Descripti6Descripti7Descripti8Descripti9Descripti2Descripti1Descripti2Descripti3Descripti4Descripti5Descripti6Descripti7Descripti8Descripti9Descripti3Descripti1Descripti2Descripti3Descripti4Descripti5Descripti6Descripti7Descripti8Descripti9Descripti4Descripti1Descripti2Descripti3Descripti4Descripti5Descripti6Descripti7Descripti8Descripti9Descripti5',
     'Assignees1Assignees2Assignees3',
-    'No Status'
+    'No Status',
+ '2024-04-22 16:00:00+07:00',
+ '2024-04-22 16:00:00+07:00'
 );
 
 -- Row 2
-INSERT INTO tasks (task_title, task_description, task_Assignees, task_Status)
+INSERT INTO tasks (task_title, task_description, task_Assignees, task_Status,created_on, updated_on)
 VALUES (
     'Repository',
     '',
     '',
-    'To Do'
+    'To Do',
+ '2024-04-22 16:05:00+07:00',
+ '2024-04-22 21:00:00+07:00'
 );
 
 -- Row 3
-INSERT INTO tasks (task_title, task_description, task_Assignees, task_Status)
+INSERT INTO tasks (task_title, task_description, task_Assignees, task_Status,created_on, updated_on)
 VALUES (
-    'ดาต$าเบส',
-    '້້ສ ້ າ ງ ຖ າ ນ ຂໍ ມ ູ ນ\nあなた、彼、彼女 (私ではありません)',
+    'ดาต้าเบส',
+    'ສ້າງຖານຂໍ້ມູນ',
     'あなた、彼、彼女 (私ではありません)',
-    'Doing'
+    'Doing',
+ '2024-04-22 16:10:00+07:00',
+ '2024-04-25 07:00:00+07:00'
 );
 
 -- Row 4
-INSERT INTO tasks (task_title, task_description, task_Assignees, task_Status)
+INSERT INTO tasks (task_title, task_description, task_Assignees, task_Status,created_on, updated_on)
 VALUES (
-    'Infrastructure',
-    'Setup containers\nไก่*งวง กับ เพนกวิน',
-    '',
-    'Done'
+    '_Infrastructure_',
+    '_Setup containers_',
+    'ไก่งวง กับ เพนกวิน',
+    'Done',
+ '2024-04-22 16:15:00+07:00',
+ '2024-04-22 17:00:00+07:00'
 );
