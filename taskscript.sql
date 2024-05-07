@@ -17,7 +17,7 @@
 
 --
 -- Table structure for table `tasks`
---
+-- tasks
 
 DROP TABLE IF EXISTS `tasks`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -26,8 +26,8 @@ CREATE TABLE `tasks` (
   `id` int NOT NULL AUTO_INCREMENT,
   `task_title` varchar(100) NOT NULL,
   `task_description` varchar(500) DEFAULT NULL,
-  `task_assignees` tinytext,
-  `task_status` enum('NO_STATUS','TO_DO','DOING','DONE') NOT NULL,
+  `task_assignees` tinytext DEFAULT NULL,
+  `task_status` enum('NO_STATUS','TO_DO','DOING','DONE') DEFAULT 'NO_STATUS',
   `created_on` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_on` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
@@ -54,3 +54,5 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2024-04-29 18:40:39
+
+use SSI3;
