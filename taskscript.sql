@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS `tasks`;
+DROP TABLE IF EXISTS `tasksV2`;
 DROP TABLE IF EXISTS `status`;
 CREATE TABLE `status` (
 `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -8,7 +8,7 @@ CREATE TABLE `status` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
-CREATE TABLE `tasks` (
+CREATE TABLE `tasksV2` (
   `id` int NOT NULL AUTO_INCREMENT,
   `task_title` varchar(100) NOT NULL,
   `task_description` varchar(500) DEFAULT NULL,
@@ -27,7 +27,7 @@ VALUES
 ( 'DOING', 'Doing'),
 ( 'DONE', 'Done');
 
-INSERT INTO `tasks` (`task_title`, `task_description`, `task_assignees`, `task_status_id`, `created_on`, `updated_on`)
+INSERT INTO `tasksV2` (`task_title`, `task_description`, `task_assignees`, `task_status_id`, `created_on`, `updated_on`)
 VALUES 
 ('TaskTitle1TaskTitle2TaskTitle3TaskTitle4TaskTitle5TaskTitle6TaskTitle7TaskTitle8TaskTitle9TaskTitle0',
 'Descripti1Descripti2Descripti3Descripti4Descripti5Descripti6Descripti7Descripti8Descripti9Descripti1Descripti1Descripti2Descripti3Descripti4Descripti5Descripti6Descripti7Descripti8Descripti9Descripti2Descripti1Descripti2Descripti3Descripti4Descripti5Descripti6Descripti7Descripti8Descripti9Descripti3Descripti1Descripti2Descripti3Descripti4Descripti5Descripti6Descripti7Descripti8Descripti9Descripti4Descripti1Descripti2Descripti3Descripti4Descripti5Descripti6Descripti7Descripti8Descripti9Descripti5',
@@ -44,3 +44,7 @@ VALUES
 ('_Infrastructure_', '_Setup containers_', 'ไก่งวง กับ เพนกวิน', 4, 
 '2024-04-22 09:15:00',
 '2024-04-22 10:00:00');
+
+SELECT * FROM tasks;
+
+COMMIT;
