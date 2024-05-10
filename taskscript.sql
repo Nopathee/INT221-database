@@ -4,8 +4,8 @@ CREATE TABLE `status` (
 `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
 `statusName` VARCHAR(50) NOT NULL UNIQUE,
 `statusDescription` VARCHAR(200) ,
-`created_on` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-`updated_on` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+`created_on` datetime DEFAULT CURRENT_TIMESTAMP,
+`updated_on` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -16,8 +16,8 @@ CREATE TABLE `tasksV2` (
   `task_description` varchar(500) DEFAULT NULL,
   `task_assignees` tinytext DEFAULT NULL,
   `task_status_id` int, 
-  `created_on` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_on` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_on` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_on` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   FOREIGN KEY (`task_status_id`) REFERENCES `status`(`id`) 
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -48,3 +48,5 @@ VALUES
 '2024-04-22 10:00:00');
 
 commit;
+
+select * from tasksV2;
