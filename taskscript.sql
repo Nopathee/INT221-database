@@ -1,7 +1,6 @@
 DROP TABLE IF EXISTS `tasksV2`;
 DROP TABLE IF EXISTS `status`;
 DROP TABLE IF EXISTS `tasks`;
-
 CREATE TABLE `status` (
 `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
 `statusName` VARCHAR(50) NOT NULL UNIQUE,
@@ -36,10 +35,10 @@ CREATE TABLE `tasks` (
 
 INSERT INTO `status` (`statusName`, `statusDescription`)
 VALUES 
-( 'NO_STATUS', 'No Status'),
-( 'TO_DO', 'To Do'),
-( 'DOING', 'Doing'),
-( 'DONE', 'Done');
+( 'No Status', 'The default status'),
+( 'To Do', null),
+( 'Doing', 'Being worked on'),
+( 'Done', 'Finished');
 
 INSERT INTO `tasksV2` (`task_title`, `task_description`, `task_assignees`, `task_status_id`, `created_on`, `updated_on`)
 VALUES 
