@@ -10,7 +10,7 @@ CREATE TABLE `status` (
 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-CREATE TABLE `tasksV2` (
+CREATE TABLE `tasksV2`  (
   `id` int NOT NULL AUTO_INCREMENT,
   `task_title` varchar(100) NOT NULL,
   `task_description` varchar(500) DEFAULT NULL,
@@ -20,7 +20,7 @@ CREATE TABLE `tasksV2` (
   `updated_on` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   FOREIGN KEY (`task_status_id`) REFERENCES `status`(`id`) 
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1 CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 CREATE TABLE `tasks` (
   `id` int NOT NULL AUTO_INCREMENT,
@@ -31,7 +31,7 @@ CREATE TABLE `tasks` (
   `created_on` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_on` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 INSERT INTO `status` (`statusName`, `statusDescription`)
 VALUES 
