@@ -33,30 +33,45 @@ CREATE TABLE `tasks` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
+
+-- INSERT INTO `tasksV2` (`task_title`, `task_description`, `task_assignees`, `task_status_id`, `created_on`, `updated_on`)
+-- VALUES 
+-- ('TaskTitle1TaskTitle2TaskTitle3TaskTitle4TaskTitle5TaskTitle6TaskTitle7TaskTitle8TaskTitle9TaskTitle0',
+-- 'Descripti1Descripti2Descripti3Descripti4Descripti5Descripti6Descripti7Descripti8Descripti9Descripti1Descripti1Descripti2Descripti3Descripti4Descripti5Descripti6Descripti7Descripti8Descripti9Descripti2Descripti1Descripti2Descripti3Descripti4Descripti5Descripti6Descripti7Descripti8Descripti9Descripti3Descripti1Descripti2Descripti3Descripti4Descripti5Descripti6Descripti7Descripti8Descripti9Descripti4Descripti1Descripti2Descripti3Descripti4Descripti5Descripti6Descripti7Descripti8Descripti9Descripti5',
+-- 'Assignees1Assignees2Assignees3',
+-- 1, 
+-- '2024-04-22 09:00:00',
+-- '2024-04-22 09:00:00'),
+-- ('Repository', '', '', 2, 
+-- '2024-04-22 09:05:00',
+-- '2024-04-22 14:00:00'),
+-- ('ดาต้าเบส', 'ສ້າງຖານຂໍ້ມູນ', 'あなた、彼、彼女 (私ではありません)', 3, 
+-- '2024-04-22 09:10:00',
+-- '2024-04-25 00:00:00'),
+-- ('_Infrastructure_', '_Setup containers_', 'ไก่งวง กับ เพนกวิน', 4, 
+-- '2024-04-22 09:15:00',
+-- '2024-04-22 10:00:00');
+
 INSERT INTO `status` (`statusName`, `statusDescription`)
-VALUES 
-( 'No Status', 'The default status'),
-( 'To Do', null),
-( 'Doing', 'Being worked on'),
-( 'Done', 'Finished');
+VALUES
+  ('No Status', 'A status has not been assigned'),
+  ('To Do', 'The task is included in the project'),
+  ('In Progress', 'Being worked on'),
+  ('Reviewing', 'The task is being reviewed'),
+  ('Testing', 'The task is being tested'),
+  ('Done', 'The task has been completed'),
+  ('Waiting', 'The task is waiting for a resource');
+  
 
 INSERT INTO `tasksV2` (`task_title`, `task_description`, `task_assignees`, `task_status_id`, `created_on`, `updated_on`)
-VALUES 
-('TaskTitle1TaskTitle2TaskTitle3TaskTitle4TaskTitle5TaskTitle6TaskTitle7TaskTitle8TaskTitle9TaskTitle0',
-'Descripti1Descripti2Descripti3Descripti4Descripti5Descripti6Descripti7Descripti8Descripti9Descripti1Descripti1Descripti2Descripti3Descripti4Descripti5Descripti6Descripti7Descripti8Descripti9Descripti2Descripti1Descripti2Descripti3Descripti4Descripti5Descripti6Descripti7Descripti8Descripti9Descripti3Descripti1Descripti2Descripti3Descripti4Descripti5Descripti6Descripti7Descripti8Descripti9Descripti4Descripti1Descripti2Descripti3Descripti4Descripti5Descripti6Descripti7Descripti8Descripti9Descripti5',
-'Assignees1Assignees2Assignees3',
-1, 
-'2024-04-22 09:00:00',
-'2024-04-22 09:00:00'),
-('Repository', '', '', 2, 
-'2024-04-22 09:05:00',
-'2024-04-22 14:00:00'),
-('ดาต้าเบส', 'ສ້າງຖານຂໍ້ມູນ', 'あなた、彼、彼女 (私ではありません)', 3, 
-'2024-04-22 09:10:00',
-'2024-04-25 00:00:00'),
-('_Infrastructure_', '_Setup containers_', 'ไก่งวง กับ เพนกวิน', 4, 
-'2024-04-22 09:15:00',
-'2024-04-22 10:00:00');
+VALUES
+  ('NS01', '', '', 1, '2024-05-14 09:00:00', '2024-05-14 09:00:00'),
+  ('TD01', '', '', 2, '2024-05-14 09:10:00', '2024-05-14 09:10:00'),
+  ('IP01', '', '', 3, '2024-05-14 09:20:00', '2024-05-14 09:20:00'),
+  ('TD02', '', '', 2, '2024-05-14 09:30:00', '2024-05-14 09:30:00'),
+  ('DO01', '', '', 6, '2024-05-14 09:40:00', '2024-05-14 09:40:00'),
+  ('IP02', '', '', 3, '2024-05-14 09:50:00', '2024-05-14 09:50:00');
+
 
 INSERT INTO `tasks` VALUES (
 1,'TaskTitle1TaskTitle2TaskTitle3TaskTitle4TaskTitle5TaskTitle6TaskTitle7TaskTitle8TaskTitle9TaskTitle0',
