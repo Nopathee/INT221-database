@@ -1,7 +1,7 @@
 -- Drop existing tables if they exist to start fresh
 DROP TABLE IF EXISTS `tasksV3`;
-DROP TABLE IF EXISTS `status`;
 DROP TABLE IF EXISTS `board`;
+DROP TABLE IF EXISTS `status`;
 DROP TABLE IF EXISTS `usersLocal`;
 
 -- Create users table
@@ -29,7 +29,7 @@ CREATE TABLE `status` (
   `color` VARCHAR(30) DEFAULT '#ffffff',
   `created_on` DATETIME DEFAULT CURRENT_TIMESTAMP,
   `updated_on` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `board_id` INT NOT NULL,
+  `board_id` varchar(10) NOT NULL,
   FOREIGN KEY (`board_id`) REFERENCES `board`(`board_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -42,7 +42,7 @@ CREATE TABLE `tasksV3` (
   `task_status_id` INT,
   `created_on` DATETIME DEFAULT CURRENT_TIMESTAMP,
   `updated_on` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `board_id` INT NOT NULL,
+  `board_id` varchar(10) NOT NULL,
   FOREIGN KEY (`task_status_id`) REFERENCES `status`(`id`),
   FOREIGN KEY (`board_id`) REFERENCES `board`(`board_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
