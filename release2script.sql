@@ -1,7 +1,7 @@
 -- Drop existing tables if they exist to start fresh
 DROP TABLE IF EXISTS `tasksV3`;
-DROP TABLE IF EXISTS `board`;
 DROP TABLE IF EXISTS `status`;
+DROP TABLE IF EXISTS `board`;
 DROP TABLE IF EXISTS `usersLocal`;
 
 -- Create users table
@@ -46,5 +46,18 @@ CREATE TABLE `tasksV3` (
   FOREIGN KEY (`task_status_id`) REFERENCES `status`(`id`),
   FOREIGN KEY (`board_id`) REFERENCES `board`(`board_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE `tasksV2`  (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `task_title` varchar(100) NOT NULL,
+  `task_description` varchar(500) DEFAULT NULL,
+  `task_assignees` tinytext DEFAULT NULL,
+  `task_status_id` int, 
+  `created_on` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_on` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`task_status_id`) REFERENCES `status`(`id`) 
+) ENGINE=InnoDB AUTO_INCREMENT=1 CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
 
 COMMIT;
