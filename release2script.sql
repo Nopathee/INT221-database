@@ -1,6 +1,5 @@
 -- Drop existing tables in the correct order to avoid foreign key constraints
 DROP TABLE IF EXISTS `tasksV3`;                        
-DROP TABLE IF EXISTS `tasksV2`;
 DROP TABLE IF EXISTS `status`;
 DROP TABLE IF EXISTS `board`;
 DROP TABLE IF EXISTS `usersLocal`;
@@ -19,6 +18,7 @@ CREATE TABLE `board` (
   `board_id` varchar(10) NOT NULL PRIMARY KEY,
   `board_name` VARCHAR(120) NOT NULL,
   `owner_id` VARCHAR(36) NOT NULL,
+  `visibility` ENUM('PUBLIC','PRIVATE') DEFAULT 'PRIVATE',
   FOREIGN KEY (`owner_id`) REFERENCES `usersLocal`(`oid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -28,7 +28,7 @@ CREATE TABLE `status` (
   `status_name` VARCHAR(100) NOT NULL,
   `status_description` VARCHAR(200),
   `color` VARCHAR(30) DEFAULT '#ffffff',
-  `board_id` varchar(10) NOT NULL,
+  `board_id` VARCHAR(10) NOT NULL,
   FOREIGN KEY (`board_id`) REFERENCES `board`(`board_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -45,6 +45,22 @@ CREATE TABLE `tasksV3` (
   FOREIGN KEY (`task_status_id`) REFERENCES `status`(`id`),
   FOREIGN KEY (`board_id`) REFERENCES `board`(`board_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+DELIMITER //
+
+CREATE TRIGGER `add_default_statuses` AFTER INSERT ON `board`
+FOR EACH ROW
+BEGIN
+  INSERT INTO `status` (`status_name`, `status_description`, `board_id`)
+  VALUES 
+    ('NO_STATUS', 'No Status', NEW.board_id),
+    ('TO_DO', 'To Do', NEW.board_id),
+    ('DOING', 'Doing', NEW.board_id),
+    ('DONE', 'Done', NEW.board_id);
+END //
+
+DELIMITER ;
+
 
 -- Create tasksV2 table
 -- CREATE TABLE `tasksV2`  (
