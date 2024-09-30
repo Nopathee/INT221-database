@@ -53,7 +53,7 @@ FOR EACH ROW
 BEGIN
   INSERT INTO `status` (`status_name`, `status_description`, `board_id`)
   VALUES 
-    ('No Satatus', 'A status has not been assigned', NEW.board_id),
+    ('No Status', 'A status has not been assigned', NEW.board_id),
     ('To Do', 'The task is included in the project', NEW.board_id),
     ('Doing', 'The task is being worked on', NEW.board_id),
     ('Done', 'The task has been completed', NEW.board_id);
