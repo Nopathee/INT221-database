@@ -3,6 +3,7 @@ DROP TABLE IF EXISTS `tasksV3`;
 DROP TABLE IF EXISTS `status`;
 DROP TABLE IF EXISTS `board`;
 DROP TABLE IF EXISTS `usersLocal`;
+DROP TABLE IF EXISTS `collaborators`;
 
 -- Create users table
 CREATE TABLE `usersLocal` (
@@ -45,6 +46,17 @@ CREATE TABLE `tasksV3` (
   FOREIGN KEY (`task_status_id`) REFERENCES `status`(`id`),
   FOREIGN KEY (`board_id`) REFERENCES `board`(`board_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE `collaborators` (
+  `collab_id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `board_id` VARCHAR(10) NOT NULL,
+  `user_id` VARCHAR(36) NOT NULL,
+  `access_right` ENUM('READ', 'WRITE') NOT NULL,
+  `added_on` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (`board_id`) REFERENCES `board`(`board_id`),
+  FOREIGN KEY (`user_id`) REFERENCES `usersLocal`(`oid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 
 DELIMITER //
 
