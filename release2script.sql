@@ -1,9 +1,9 @@
 -- Drop existing tables in the correct order to avoid foreign key constraints
 DROP TABLE IF EXISTS `tasksV3`;                        
 DROP TABLE IF EXISTS `status`;
+DROP TABLE IF EXISTS `collaborators`;
 DROP TABLE IF EXISTS `board`;
 DROP TABLE IF EXISTS `usersLocal`;
-DROP TABLE IF EXISTS `collaborators`;
 
 -- Create users table
 CREATE TABLE `usersLocal` (
@@ -20,6 +20,8 @@ CREATE TABLE `board` (
   `board_name` VARCHAR(120) NOT NULL,
   `owner_id` VARCHAR(36) NOT NULL,
   `visibility` ENUM('PUBLIC','PRIVATE') DEFAULT 'PRIVATE',
+  `created_on` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  `updated_on` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   FOREIGN KEY (`owner_id`) REFERENCES `usersLocal`(`oid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -48,11 +50,13 @@ CREATE TABLE `tasksV3` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE `collaborators` (
-  `collab_id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `board_id` VARCHAR(10) NOT NULL,
   `user_id` VARCHAR(36) NOT NULL,
-  `access_right` ENUM('READ', 'WRITE') NOT NULL,
+  `email` VARCHAR(50) NOT NULL,
+  `name` VARCHAR(100) NOT NULL,
+  `access_right` ENUM('READ', 'WRITE') NOT NULL DEFAULT 'READ',
   `added_on` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (board_id, user_id),
   FOREIGN KEY (`board_id`) REFERENCES `board`(`board_id`),
   FOREIGN KEY (`user_id`) REFERENCES `usersLocal`(`oid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -73,6 +77,7 @@ END //
 
 DELIMITER ;
 
+SELECT * FROM usersLocal;
 
 -- Create tasksV2 table
 -- CREATE TABLE `tasksV2`  (
