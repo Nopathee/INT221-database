@@ -2,16 +2,19 @@
 DROP TABLE IF EXISTS `tasksV3`;                        
 DROP TABLE IF EXISTS `status`;
 DROP TABLE IF EXISTS `collaborators`;
+DROP TABLE IF EXISTS `personal_board`;
 DROP TABLE IF EXISTS `board`;
 DROP TABLE IF EXISTS `usersLocal`;
 
 -- Create users table
 CREATE TABLE `usersLocal` (
-  `oid` VARCHAR(36) NOT NULL PRIMARY KEY,
+  `owner_id` VARCHAR(36) NOT NULL PRIMARY KEY,
   `username` VARCHAR(50) NOT NULL,
   `name` VARCHAR(100) NOT NULL,
   `email` VARCHAR(50) NOT NULL,
-  `role` ENUM('LECTURER', 'STAFF', 'STUDENT') DEFAULT 'STUDENT'
+  `role` ENUM('LECTURER', 'STAFF', 'STUDENT') DEFAULT 'STUDENT',
+  `created_on` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_on` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Create board table with auto-incrementing board_id
@@ -22,7 +25,27 @@ CREATE TABLE `board` (
   `visibility` ENUM('PUBLIC','PRIVATE') DEFAULT 'PRIVATE',
   `created_on` DATETIME DEFAULT CURRENT_TIMESTAMP,
   `updated_on` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  FOREIGN KEY (`owner_id`) REFERENCES `usersLocal`(`oid`)
+  FOREIGN KEY (`owner_id`) REFERENCES `usersLocal`(`owner_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Complete the personal_board table
+CREATE TABLE `personal_board`(
+  `shared_id` INT NOT NULL AUTO_INCREMENT,
+  `board_id` VARCHAR(10) NOT NULL,
+  `owner_id` CHAR(36) NOT NULL,
+  `access_right` ENUM('READ','WRITE') NOT NULL DEFAULT 'READ',
+  `added_on` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`shared_id`, `board_id`, `owner_id`),
+  INDEX `fk_personal_board_users_idx` (`owner_id`),
+  INDEX `fk_personal_board_boards_idx` (`board_id`),
+  CONSTRAINT `fk_personal_board_users`
+    FOREIGN KEY (`owner_id`) REFERENCES `usersLocal` (`owner_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_personal_board_boards`
+    FOREIGN KEY (`board_id`) REFERENCES `board` (`board_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Create status table
@@ -50,15 +73,13 @@ CREATE TABLE `tasksV3` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE `collaborators` (
+  `collab_id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `board_id` VARCHAR(10) NOT NULL,
   `user_id` VARCHAR(36) NOT NULL,
-  `email` VARCHAR(50) NOT NULL,
-  `name` VARCHAR(100) NOT NULL,
   `access_right` ENUM('READ', 'WRITE') NOT NULL DEFAULT 'READ',
   `added_on` DATETIME DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (board_id, user_id),
   FOREIGN KEY (`board_id`) REFERENCES `board`(`board_id`),
-  FOREIGN KEY (`user_id`) REFERENCES `usersLocal`(`oid`)
+  FOREIGN KEY (`user_id`) REFERENCES `usersLocal`(`owner_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
