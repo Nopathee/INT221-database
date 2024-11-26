@@ -68,10 +68,11 @@ CREATE TABLE `tasksV3` (
   `created_on` DATETIME DEFAULT CURRENT_TIMESTAMP,
   `updated_on` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `board_id` varchar(10) NOT NULL,
-  FOREIGN KEY (`task_status_id`) REFERENCES `status`(`id`),
+  FOREIGN KEY (`task_status_id`) REFERENCES `status`(`id`) ON DELETE CASCADE,
   FOREIGN KEY (`board_id`) REFERENCES `board`(`board_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+-- Create collaborators table
 CREATE TABLE `collaborators` (
   `collab_id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `board_id` VARCHAR(10) NOT NULL,
@@ -82,7 +83,7 @@ CREATE TABLE `collaborators` (
   FOREIGN KEY (`user_id`) REFERENCES `usersLocal`(`owner_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-
+-- Add trigger to add default statuses
 DELIMITER //
 
 CREATE TRIGGER `add_default_statuses` AFTER INSERT ON `board`
@@ -98,19 +99,7 @@ END //
 
 DELIMITER ;
 
-SELECT * FROM usersLocal;
-
--- Create tasksV2 table
--- CREATE TABLE `tasksV2`  (
---   `id` int NOT NULL AUTO_INCREMENT,
---   `task_title` varchar(100) NOT NULL,
---   `task_description` varchar(500) DEFAULT NULL,
---   `task_assignees` tinytext DEFAULT NULL,
---   `task_status_id` int, 
---   `created_on` datetime DEFAULT CURRENT_TIMESTAMP,
---   `updated_on` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
---   PRIMARY KEY (`id`),
---   FOREIGN KEY (`task_status_id`) REFERENCES `status`(`id`) 
--- ) ENGINE=InnoDB AUTO_INCREMENT=1 CHARACTER SET utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
 COMMIT;
+
+
+
